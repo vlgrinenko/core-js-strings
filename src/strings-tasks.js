@@ -554,67 +554,28 @@ function encodeToRot13(str) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  const cards = [
-    'A♣',
-    '2♣',
-    '3♣',
-    '4♣',
-    '5♣',
-    '6♣',
-    '7♣',
-    '8♣',
-    '9♣',
-    '10♣',
-    'J♣',
-    'Q♣',
-    'K♣',
-    'A♦',
-    '2♦',
-    '3♦',
-    '4♦',
-    '5♦',
-    '6♦',
-    '7♦',
-    '8♦',
-    '9♦',
-    '10♦',
-    'J♦',
-    'Q♦',
-    'K♦',
-    'A♥',
-    '2♥',
-    '3♥',
-    '4♥',
-    '5♥',
-    '6♥',
-    '7♥',
-    '8♥',
-    '9♥',
-    '10♥',
-    'J♥',
-    'Q♥',
-    'K♥',
-    'A♠',
-    '2♠',
-    '3♠',
-    '4♠',
-    '5♠',
-    '6♠',
-    '7♠',
-    '8♠',
-    '9♠',
-    '10♠',
-    'J♠',
-    'Q♠',
-    'K♠',
+  const raitings = [
+    'A',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    'J',
+    'Q',
+    'K',
   ];
-  let result = 0;
+  const suits = ['♣', '♦', '♥', '♠'];
 
-  for (let i = 0; i < cards.length; i += 1) {
-    if (cards[i] === value) {
-      result = i;
-    }
-  }
+  const indexRaiting = raitings.indexOf(value.slice(0, -1));
+  const indexSuit = suits.indexOf(value.slice(-1));
+
+  const result = indexSuit * raitings.length + indexRaiting;
+
   return result;
 }
 
